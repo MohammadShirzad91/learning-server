@@ -1,10 +1,10 @@
 package com.example.learningserver.config;
 
-import com.mysql.cj.jdbc.MysqlDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -21,6 +21,7 @@ public class DbConfig {
     @Autowired
     private DataSourceProperties dataSourceProperties;
     @Bean
+    @Primary
     public DataSource dataSource(){
         try {
              return DataSourceBuilder.create()
@@ -34,6 +35,7 @@ public class DbConfig {
         }
     }
     @Bean
+    @Primary
     public PlatformTransactionManager transactionManager(){
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
         jpaTransactionManager.setJpaDialect(new HibernateJpaDialect());

@@ -5,4 +5,5 @@ import com.example.learningserver.service.data.CardEntity;
 public interface CardService {
     void insertCard(CardEntity card);
     CardEntity getCardByPan(String pan);
+    void writeCardOnFile(String pan);
 }

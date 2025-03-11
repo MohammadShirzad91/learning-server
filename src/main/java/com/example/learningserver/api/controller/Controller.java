@@ -23,4 +23,9 @@ public class Controller implements FeignApi {
     public CardEntityDto getCardByPan(@RequestParam String pan){
         return MAPPER.map(cardService.getCardByPan(pan));
     }
+
+    @PostMapping(value = "/write-card-on-file")
+    public void writeCardOnFile(@RequestParam String pan){
+        cardService.writeCardOnFile(pan);
+    }
 }

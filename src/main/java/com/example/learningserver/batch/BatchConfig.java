@@ -14,7 +14,6 @@ import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
@@ -24,20 +23,18 @@ import javax.sql.DataSource;
 @RequiredArgsConstructor
 public class BatchConfig {
     private final DataSource dataSource;
+    private final PlatformTransactionManager transactionManager;
 
     @Bean
     public JobExecutionListener jobExecutionListener(){
         return new MyJobExecutionListener();
     }
-    @Bean
-    public PlatformTransactionManager batchTransactionManager(){
-        return new DataSourceTransactionManager(dataSource);
-    }
+
     @Bean
     public JobRepository jobRepository() throws Exception {
         JobRepositoryFactoryBean jobRepositoryFactoryBean = new JobRepositoryFactoryBean();
         jobRepositoryFactoryBean.setDataSource(dataSource);
-        jobRepositoryFactoryBean.setTransactionManager(batchTransactionManager());
+        jobRepositoryFactoryBean.setTransactionManager(transactionManager);
         jobRepositoryFactoryBean.afterPropertiesSet();
         return jobRepositoryFactoryBean.getObject();
     }
@@ -51,7 +48,7 @@ public class BatchConfig {
     @Bean
     public Step step() throws Exception {
         return new StepBuilder("step", jobRepository())
-                .chunk(1, batchTransactionManager())
+                .<String, String>chunk(1, transactionManager)
                 .reader(itemReader())
                 .processor(itemProcessor())
                 .writer(itemWriter())

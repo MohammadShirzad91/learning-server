@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 public class MyProcessor implements ItemProcessor<CardEntity, String> {
     @Override
     public String process(CardEntity item) throws Exception {
+        System.out.println("processor ...");
         boolean isNotValid = item.getPan() == null || item.getCif() == null
                 || item.getPaymentApplicationNumber() == null ||
                 item.getPaymentApplicationType() == null;

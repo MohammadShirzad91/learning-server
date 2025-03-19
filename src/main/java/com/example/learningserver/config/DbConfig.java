@@ -21,7 +21,6 @@ public class DbConfig {
     @Autowired
     private DataSourceProperties dataSourceProperties;
     @Bean
-    @Primary
     public DataSource dataSource(){
         try {
              return DataSourceBuilder.create()
@@ -35,7 +34,6 @@ public class DbConfig {
         }
     }
     @Bean
-    @Primary
     public PlatformTransactionManager transactionManager(){
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
         jpaTransactionManager.setJpaDialect(new HibernateJpaDialect());

@@ -19,8 +19,8 @@ public class Controller implements FeignApi {
         cardService.insertCard(MAPPER.map(card));
     }
 
-    @PostMapping(value = "/get-card-by-pan")
-    public CardEntityDto getCardByPan(@RequestParam String pan){
+    @GetMapping(value = "/get-card-by-pan")
+    public CardEntityDto getCardByPan(@RequestParam("pan") String pan){
         return MAPPER.map(cardService.getCardByPan(pan));
     }
 

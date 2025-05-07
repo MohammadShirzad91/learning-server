@@ -16,7 +16,12 @@
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
     </root>
-
+    <logger name="javax.net.ssl" level="debug" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
+    <logger name="sun.security.ssl" level="debug" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
     <logger name="org.hibernate.sql" level="debug" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>

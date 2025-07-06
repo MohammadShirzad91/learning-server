@@ -32,7 +32,7 @@ public class CardServiceImpl implements CardService{
     @Override
     public CardEntity getCardByPan(String pan) {
         log.info("service is called");
-        return cardDao.findById(pan).get();
+        return cardDao.findById(pan).orElse(null);
     }
 
     @Override

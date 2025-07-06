@@ -28,8 +28,8 @@
     <logger name="org.hibernate.orm.jdbc.bind" level="trace" additivity="false">
         <appender-ref ref="CONSOLE"/>
     </logger>
-<!--    <logger name="org.hibernate.persister.entity" level="trace" additivity="false">-->
-<!--        <appender-ref ref="CONSOLE"/>-->
-<!--    </logger>-->
+    <logger name="org.hibernate.type.descriptor.sql.BasicExtractor" level="trace" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+    </logger>
 
 </configuration>

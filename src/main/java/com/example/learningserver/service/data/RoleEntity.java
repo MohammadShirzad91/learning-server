@@ -8,19 +8,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table("roles")
+@Table(name = "roles")
 @Data
 @NoArgsConstructor
 public class RoleEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name; // e.g., "ROLE_ADMIN"
 
     @ManyToMany(mappedBy = "roles")
     private Set<UserEntity> users;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "roles_privileges",
             joinColumns = @JoinColumn(name = "role_id"),

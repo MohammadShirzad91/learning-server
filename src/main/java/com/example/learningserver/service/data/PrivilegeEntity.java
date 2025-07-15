@@ -8,12 +8,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table("prvlg")
+@Table(name = "privileges")
 @Data
 @NoArgsConstructor
 public class PrivilegeEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     private String name; // e.g., "READ_PRIVILEGE", "WRITE_PRIVILEGE"

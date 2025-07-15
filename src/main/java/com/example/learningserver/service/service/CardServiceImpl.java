@@ -1,6 +1,6 @@
 package com.example.learningserver.service.service;
 
-import com.example.learningserver.service.dao.CardRepository;
+import com.example.learningserver.service.repository.CardRepository;
 import com.example.learningserver.service.data.CardEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -1,6 +1,6 @@
 package com.example.learningserver.batch;
 
-import com.example.learningserver.service.dao.CardRepository;
+import com.example.learningserver.service.repository.CardRepository;
 import com.example.learningserver.service.data.CardEntity;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.NonTransientResourceException;
